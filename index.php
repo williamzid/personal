@@ -10,6 +10,8 @@ include_once('GraphicFactory.php');
 include_once('TextFactory.php');
 include_once('DirtyWordsFilter.php');
 include_once('leetcode/leetcode/php/leetcode442.php');
+include_once('spider/WebSpider.php');
+include_once('DataBase/Mysql.php');
 
 class Client
 {
@@ -25,6 +27,56 @@ class Client
     }
 }
 
+$arr = array(-19,-32,-23,-4,2,45,23,443);
+
+$arr = quickSort($arr);
+
+
+
+
+$arr = array('a', 'b', 'c', 'd');
+
+foreach ( $arr as &$val ) {  // 该foreach 会导致 $val = &$arr[3];
+
+}
+
+foreach ( $arr as $val ) {
+    print_r($arr);
+    echo '<br/>';
+}
+exit;
+// 循环数组时的怪现象
+$arr = array(0, 1, 2, 3);
+
+foreach ( $arr as $v )
+{
+
+}
+
+var_dump(current($arr));  // 数组指针停留在数组结尾处， 取不到值. false
+
+echo '<br/>';
+
+$arr = array(0, 1, 2, 3);
+
+foreach ( $arr as $val=>$key ) { // foreach 使用的 $arr 是   $arr的副本.
+    $arr[$key] = $val;  // 修改之后，就会产生分裂。 foreach 遍历的是 $arr 的副本。 但是原数组的指针已经走了一步.
+}
+
+var_dump(current($arr)); // 1
+
+exit;
+
+//db connect
+$db = new Mysql();
+$db->getClassStringLeton();
+exit;
+
+
+//spider
+$web_spider = new WebSpider();
+$web_spider->getChoiesSkuAndImages();
+exit;
 $arr = [1,2,2,3,3,1,3,6,7,8,8,9,4,6];
 $sol = new findAllDuplicatesInArray();
 $res = $sol->solution($arr);
